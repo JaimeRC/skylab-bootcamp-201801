@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pasapalabra</title>
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+	<body class="body">
+		<header class="header">
+			<h1 class="h1">PASAPALABRA</h1>
+		</header>
+		<nav class="nav">
+			<table class="table">
+			<tr>
+				<td id="a" class="td">A</td>
+				<td id="b" class="td">B</td>
+				<td id="c" class="td">C</td>
+				<td id="d" class="td">D</td>
+			</tr>
+			<tr>
+				<td id="e" class="td">E</td>
+				<td id="f" class="td">F</td>
+				<td id="g" class="td">G</td>
+				<td id="h" class="td">H</td>
+			</tr>
+			<tr>
+				<td id="i" class="td">I</td>
+				<td id="j" class="td">J</td>
+				<td id="k" class="td">K</td>
+				<td id="l" class="td">L</td>
+			</tr>
+			<tr>
+				<td id="m" class="td">M</td>
+				<td id="n" class="td">N</td>
+				<td id="ñ" class="td">Ñ</td>
+				<td id="o" class="td">O</td>
+			</tr>
+			<tr>
+				<td id="p" class="td">P</td>
+				<td id="q" class="td">Q</td>
+				<td id="r" class="td">R</td>
+				<td id="s" class="td">S</td>
+			</tr>
+			<tr>
+				<td id="t" class="td">T</td>
+				<td id="u" class="td">U</td>
+				<td id="v" class="td">V</td>
+				<td id="w" class="td">W</td>
+			</tr>
+			<tr>
+				<td id="x" class="td">X</td>
+				<td id="y" class="td">Y</td>
+				<td id="z" class="td">Z</td>
+			</tr>
+		</table>
+		</nav>
+		<section class="section">
+			<div>
+				<input type="button" value="NUEVA PARTIDA" onclick="newGame()" class="button">
+				<br>
+				<input type="button" value="CREDITOS" onclick="credits()" class="button">
+				<br>
+				<p id="text"></p>
+				<textarea name="textarea" id="text1" placeholder="Introduzca la respuesta aqui"></textarea>
+				<br>
+				<span>
+					<input type="button" value="Responder" id="button1" class="button1" onclick="pasapalabra(false)">
+					<input type="button" value="PASAPALABRA" id="button2" class="button1" onclick="pasapalabra(true)">
+				</span>
+				<br>
+				<span>
+					<b>Aciertos:</b>
+					<label id="aciertos" class="text2"></label>
+				</span>
+			    <br>
+			    <span>
+			    	<b>Errores:</b>
+			    	<label id="errores" class="text3"></label>
+			    </span>
+			    <br>
+			    <input type="button" value="CANCELAR PARTIDA" onclick="cancelGame('JUEGO CANCELADO')" class="button">
+			</div>
+		</section>
+	<script src="app/app.js"></script>
+	</body>
+</html>

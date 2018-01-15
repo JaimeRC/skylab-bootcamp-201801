@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CalculatorJS</title>
+	<link href="https://fonts.googleapis.com/css?family=Joti+One" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+	<body>
+		<h1><b>Calculadora - Tema 7</b></h1>
+		<div class="calculadora">
+			<p id="pantalla">0</p>
+			<span id="keys">
+				<input type="button" value="C" class="buttonSp" onclick="reset()">
+			</span>
+			<form name="calculadora" id="calculadora">
+				<span id="keys">
+					<input type="button" value="1" onclick="numero('1')">
+					<input type="button" value="2" onclick="numero('2')">
+					<input type="button" value="3" onclick="numero('3')">
+					<input type="button" value="+" onclick="operar('+')">
+				</span>
+				<span id="keys">
+					<input type="button" value="4" onclick="numero('4')">
+					<input type="button" value="5" onclick="numero('5')">
+					<input type="button" value="6" onclick="numero('6')">
+					<input type="button" value="-" onclick="operar('-')">
+				</span>
+				<span id="keys">
+					<input type="button" value="7" onclick="numero('7')">
+					<input type="button" value="8" onclick="numero('8')">
+					<input type="button" value="9" onclick="numero('9')">
+					<input type="button" value="*" onclick="operar('*')">
+				</span>
+				<span id="keys">
+					<input type="button" value="0" class="button0" onclick="numero('0')">
+					<input type="button" value="/" onclick="operar('/')">
+				</span>
+				<span id="keys">
+					<input type="button" value="Raiz" class="buttonSp" onclick="operar('√')">
+				</span>
+				<span id="keys">
+					<input type="button" value="=" class="buttonEqual" onclick="esIgual()">
+				</span>					
+			</form>
+		</div>
+		<script src="app/app.js"></script>
+	</body>
+</html>

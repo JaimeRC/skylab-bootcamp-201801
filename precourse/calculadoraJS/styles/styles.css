@@ -1,0 +1,35 @@
+* {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#calculator {
+	background-color: #5cb6f2;
+	width: 500px;
+	height: 500px;
+	margin-left: 25%;
+	padding-top: 5%;
+	padding-left: 5%;
+}
+
+#n1 {
+	font-size: 18px;
+	height: 50px;
+	width: 150px;	
+}
+
+#n2 {
+	font-size: 18px;
+	height: 50px;
+	width: 150px;	
+}
+
+#calculate{
+	height: 50px;
+	width: 150px;
+	border-radius: 5px;
+}
+
+#results{
+	list-style: none;
+	font-size: 25px;
+}
