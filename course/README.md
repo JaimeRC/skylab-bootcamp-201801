@@ -1,4 +1,4 @@
-# Practice the Command Line Interface (CLI)
+## Practice the Command Line Interface (CLI)
 
 ## Goals
 
