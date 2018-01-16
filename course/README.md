@@ -1,126 +1,89 @@
-# Practice the Command Line Interface (CLI)
+![Image](images\logoskylabcode.png)
+# SKYLABCODER BOOTCAMP JANUARY 2018
 
-## Goals
+## HTML + CSS + Javascript + ReactJS + NodeJS
 
-- Basic commands
-
-## Tasks
-
-In this practice we will create a basic web-app project with the CLI.
-
-**IMPORTANT**! All this practice must be done with the CLI (except for unzipping files and editing their contents)
-
-### **Step 0**: Create the skylab folder structure following in your system documents folder:
-
+## DIA 1:
+Introducion al curso, programando el temario para las proximas semanas. 
+Empezamos explicando la metodologia de un programador
+Introduccion y/o instalacion de los siguientes programas:
+* Cmder (Shell).
+Consola para Windows. Muy util para poder gestionar la conexion de reposiorios a GITHUB mediante GIT.
 ```
-skylab
-├── course
-│   └── frontend
-└── precourse
+ls                          (muestra todos los archivos)
+ls -a                       (muestra todos los archivos incluyendo los ocultos)
+rm -rf [file]               (elimina archivo/carpeta)
+mv [origen] [destino]       (mueve archivos/carpetas del origen al destino)
+cp -p [origen] [destino]    (copia archivos/carpetas del origen al destino)
 ```
 
-Make sure you create this folder in your documents folder 
+* Visual Studio Code (IDE)
+* GIT y GitHub
+Funcionamiento de GIT. Para una mejor grstion de proyectos habrá una rama MASTER donde esta el codigo final del proyecto, una rama DEVELOP donde se depositará todo el trabajo para realizar. Todo el trabajo depositado en DEVELOP se tendra que crear una rama nueva con referencia para realizar dicho trabajo. Una vez finalizado esta tarea se subira a la rama DEVELOP para que los compañeros del proyecto lo puedan revisar y testear. Si surgiera algun inconveniente se intentaria soucionar o se crearia una nueva rama para su solucion. EN el caso de que todo estuviera correcto, y si es necesario en ese momento, se realizaria la subida del trabajo realizado a la rama MASTER para que pueda ser usada. En toda rama creada, habra muchos puntos de inflexion que sera registrado por los "commit" que se vayan realizando.
+Funcionamiento de GIT:
+![](images/git-operations.png)
 
-Hint: you may use the commands pwd, mkdir, cd.
-
-### **Step 1**: Copy the contents of your precourse into precourse folder.
-
-Hint: command cp -r ...
-
-### **Step 2**: Download and unzip *hiWorld.zip* from slack channel.
-
-- Unzip the hiWorld.zip file in skylab/course/frontend/hiWorld, the final result should be:
-
+Registrar/guardar cambios:
+Para añadirlos al **Index** empezaremos usando el siguiente comando:
 ```
-skylab
-├── course
-│   └── frontend
-│       └── hiWorld
-│           ├── deleteMePlease
-│           │   └── meToo.js
-│           ├── indice.html
-│           └── scripts.js
-└── precourse
+git add <filename>
+git add . 
 ```
-
-### **Step 3**: Clean the project
-
-- Rename the project folder *hiWorld* to *helloworld*
-- Go to folder *helloworld*
-- Remove the folder *deleteMePlease* 
-- List the project folder to check the changes
-
-Hint: commands rm, ls, ...
-
-### **Step 4**: Adjust some files 
-
-- Rename *script.js* to *main.js*
-- Rename *indice.html* to *index.html* 
-- Write these lines in *index.html* (use Notepad in Windows or TextEdit in Mac)
-
-```html
-<html>
-    <head>
-        <meta charset="UTF-8">
-    <title>Document</title>
-        <link rel="stylesheet" href="styles/styles.css">
-    </head>
-    <body>
-        hello world!
-    </body>
-    <script src="scripts/main.js">
-    </script>
-</html>
+Este es el primer paso en el flujo de trabajo básico. Para hacer *commit* a estos cambios se usa:
 ```
-
-- List the project folder to check the changes
-
-Hint: mv...
-
-### **Step 5**: Create a file
-
-- Check that you are in helloworld folder, otherwise go to it
-- Create a file named main.css
-- Write these lines in *main.css* 
-
-```css
-body{
-    color:plum;
-    font-size:120px;
-}
+git commit -m "comentario"
+```
+Ahora el archivo esta incuido en el **HEAD**, pero aún no en tu repositorio remoto, solo esta en tu copia local. Para enviar estos cambios a tu repositorio remoto ejecuta:
+```
+git push origin master
+````
+Remplaza *master* por la rama a la qu quieres enviar tus cambios.
+Para conar un repositorio ya existente y quieres conectar tu repositorio loal a un repositorio remoto, usariamos:
+```
+git remote add origin <server>
+```
+Con este ultimo comando podrás subir tus cambios al repositorio remoto seleccionado.
+Crear una nueva rama:
+Empezaremos utilizando el siguiente codigo que creara la rama y nos situara sobre ella:
+```
+git checkout -b <branch>
+```
+Para volver a la rama principal:
+```
+git checkout master
+```
+Borrar una rama:
+```
+git branch -d <branch>
+```
+Para que los demas puedan ver la rama nueva tendras que realizar un *push* a tu repositorio remoto:
+```
+git push origin <branch>
+```
+Para actualizar tu repositorio local al commit mas nuevo, ejecutaremos el siguiente comando en nuestro directorio de trabajo:
+```
+git pull
+```
+Esto bajará y fusionará los cambios remotos.
+Para fusionar otra rama a tu rama activa, utilizariamos:
+```
+git merge <branch>
+```
+Tanto *pull* como *merge* **Git** intentara fusionar los cambios. Desafortunadamente, no siempre será posible y se podrán producir conflictos. Estos tendran que ser solucionados manualmente al editar los archivos mostrados por **Git**. Despues de modificarlos, puedes revisarlo con:
+```
+git diff <source_branch> <target_branch>
+```
+Para finalizar, necesitas marcarlos como fusionados con:
+```
+git ad <filename>
 ```
 
-Hints: command touch ...
 
-### **Step 6**: Make Directory
+reemplaza cambios locales
+En caso de que hagas algo mal (lo que seguramente nunca suceda ;) puedes reemplazar cambios locales usando el comando
+git checkout -- <filename>
+Este comando reemplaza los cambios en tu directorio de trabajo con el último contenido de HEAD. Los cambios que ya han sido agregados al Index, así como también los nuevos archivos, se mantendrán sin cambio.
 
-- Make the *styles* and *scripts* folders in helloworld
-
-Hint: mkdir ...
-
-### **Step 7**: Move files
-
-- Move main.css to styles folder
-- Move main.js to scripts folder
-
-Hint: mv ...
-
-### **Step 8**: Check the project
-
-- The final result should be this:
-
-```
-skylab
-├── course
-│   └── frontend
-│       └── helloworld
-│           ├── index.html
-│           ├── scripts
-│           │   └── main.js
-│           └── styles
-│               └── main.css
-└── precourse
-    └── (your precourse files)
-```
-
-- Open index.html with your browser and see the results, you should see a welcome alert and a web page with hello world.
+Por otro lado, si quieres deshacer todos los cambios locales y commits, puedes traer la última versión del servidor y apuntar a tu copia local principal de esta forma
+git fetch origin
+git reset --hard origin/master
