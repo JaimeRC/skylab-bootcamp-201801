@@ -12,6 +12,15 @@ var array1 = [1, 2, 3];
 var array2 = [2, 30, 1];
 console.log(mergeArray(array1, array2));
 
+// findPairSum
+function findPairSum(array, target){
+    
+}
+
+// validValues *************************
+
+
+
 // longestCommon
 function longestCommon(arr) {
     var arr1 = arr.slice();
@@ -44,12 +53,8 @@ console.log(findArrayWithElement([2, 5, 9, 6], 5));
 
 // emptyArray
 function emptyArray(arr) {
-    var arr1 = new Array(arr.length);
-    while (i < arr.length) {
-        arr1.push()
-        i++
-    }
-    return arr1;
+    var newArray = new Array(arr.length);
+    return newArray;
 }
 console.log(emptyArray([1, 2, 3, 4, 5]));
 
