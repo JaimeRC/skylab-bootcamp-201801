@@ -25,12 +25,16 @@ var perro = {
 var gato = {
     name: 'Charlie',
     sound: function () {
-        console.log('Mi gato ' + this.name + ' hace Miay');
+        return ladrar();
     }
 }
 
+function ladrar(){
+    return 'Miau';
+}
 var prueba = gato.sound;
 prueba.call(gato);
+
 
 
 
