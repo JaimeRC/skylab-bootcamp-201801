@@ -64,3 +64,62 @@ function isSymbol(text) {
         return true;
 }
 isSymbol('hello%');
+
+//************************************** */
+
+function auto(brand, model, price){
+    this.brand = brand;
+    this.modelo = model;
+    this.price = price;
+}
+auto.prototype = {
+    get name(){
+        return this.brand + " " + this.model + " = " + this.pvp + " impuestos incluidos"; 
+    },
+    get pvp(){
+        return (this.price * 1.21);
+    },
+    set pvp(newPrice){
+        this.price = newPrice;
+    }
+};
+var audi = new auto("Audi","A5",45000);
+console.log(audi.name);
+audi.price = 35000;
+console.log(audi.name);
+
+// Otro metodo 
+
+function auto(brand, model, price){
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+}
+auto.prototype = {
+    get name(){
+        return this.brand + " " + this.model + " = " + this.pvp + " imp. incl."; 
+    }
+};
+var audi = new auto("Audi","A5",45000);
+Object.defineProperty(audi, 'pvp', {
+    get: function(){
+        return (this.price * 1.21);
+    },
+    set: function(newPrice){
+        this.price = newPrice;
+    }
+});
+/**
+ * Object.defineProperty(auto, 'pvp', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: 'static'
+});
+ */
+
+
+console.log(audi.name);
+audi.price = 35000;
+console.log(audi.name);
+

@@ -110,6 +110,19 @@ if you accept 025468 the output should be
 Write a JavaScript program to find the most
  frequent item of an array.
  */
+function mostFrequentItem(array) {
+    array.sort();
+    for (var i = 0; i < array.length; i++) {
+        for (var j = i+1; j < array.length; j++) {
+            if(array[i]=== arra[j])
+
+        }
+    }
+
+    //SIN FINALIZAR
+}
+var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+console.log(mostFrequentItem(arr1))
 
 
 
@@ -117,8 +130,13 @@ Write a JavaScript program to find the most
 Write a JavaScript function to move an 
 array element from one position to another.
 */
-
-
+function moveElement(array, index, pos) {
+    var value = array.splice(index, 1);
+    array.splice(pos, 0, value[0]);
+    return array;
+}
+console.log(moveElement([10, 20, 30, 40, 50], 0, 2));
+console.log(moveElement([10, 20, 30, 40, 50], -1, -2));
 
 /*swapCase
 Write a JavaScript program which accept
@@ -261,8 +279,8 @@ of elements (indices of the two numbers)
  from an given array whose sum equals a 
  specific target number.
 */
-function findPairSum(array, target){
-    
+function findPairSum(array, target) {
+
 }
 
 
