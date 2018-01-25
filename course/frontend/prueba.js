@@ -29,7 +29,7 @@ var gato = {
     }
 }
 
-function ladrar(){
+function ladrar() {
     return 'Miau';
 }
 var prueba = gato.sound;
@@ -67,45 +67,45 @@ isSymbol('hello%');
 
 //************************************** */
 
-function auto(brand, model, price){
+function auto(brand, model, price) {
     this.brand = brand;
     this.modelo = model;
     this.price = price;
 }
 auto.prototype = {
-    get name(){
-        return this.brand + " " + this.model + " = " + this.pvp + " impuestos incluidos"; 
+    get name() {
+        return this.brand + " " + this.model + " = " + this.pvp + " impuestos incluidos";
     },
-    get pvp(){
+    get pvp() {
         return (this.price * 1.21);
     },
-    set pvp(newPrice){
+    set pvp(newPrice) {
         this.price = newPrice;
     }
 };
-var audi = new auto("Audi","A5",45000);
+var audi = new auto("Audi", "A5", 45000);
 console.log(audi.name);
 audi.price = 35000;
 console.log(audi.name);
 
 // Otro metodo 
 
-function auto(brand, model, price){
+function auto(brand, model, price) {
     this.brand = brand;
     this.model = model;
     this.price = price;
 }
 auto.prototype = {
-    get name(){
-        return this.brand + " " + this.model + " = " + this.pvp + " imp. incl."; 
+    get name() {
+        return this.brand + " " + this.model + " = " + this.pvp + " imp. incl.";
     }
 };
-var audi = new auto("Audi","A5",45000);
+var audi = new auto("Audi", "A5", 45000);
 Object.defineProperty(audi, 'pvp', {
-    get: function(){
+    get: function () {
         return (this.price * 1.21);
     },
-    set: function(newPrice){
+    set: function (newPrice) {
         this.price = newPrice;
     }
 });
@@ -122,4 +122,100 @@ Object.defineProperty(audi, 'pvp', {
 console.log(audi.name);
 audi.price = 35000;
 console.log(audi.name);
+
+/***********************/
+
+var names = ['lol', 'lol', ['lol']];
+
+var countedNames = names.reduce(function (allNames, name) {
+    if (name.toString() === allNames.toString()) {
+        allNames[name]++;
+    }
+    else {
+        allNames[name] = 1;
+    }
+    return allNames;
+}, 0);
+console.log(countedNames);
+
+var names = ['lol', 'lol', ['lol', 'lol']];
+
+var countedNames = names.reduce(function (allNames, name) {
+    if (name in allNames) {
+        allNames[name]++;
+    }
+    else {
+        allNames[name] = 1;
+    }
+    return allNames;
+}, 0);
+console.log(countedNames);
+
+/******************************/
+
+function text(texto) {
+    x = {
+        value: texto,
+        wrap: function (icon) {
+            return console.log(this.value); console.log(icon)
+        },
+        wrap: function (icon, icon1) {
+            return console.log(this.value);
+        },
+        return: function () {
+            return value;
+        }
+    }
+}
+
+var text = {
+    wrap: function (icon) {
+        this.texto.concat(icon);
+    },
+    wrap: function (icon1, icon2) {
+        this.texto.concat(icon1 + icon2);
+    }
+};
+
+
+function text(sourcer) {
+    function wrap(arg1, arg2) {
+        if (arg2 === undefined) {
+            arg2 = arg1;
+        }
+        source = arg1 + source + arg2;
+        return this;
+    }
+    function toString() {
+        return source;
+    }
+    return {
+        wrap: wrap,
+        toString: toString
+    };
+}
+
+
+function wrap(text, before, after) {
+    return (before || '') + text + (after || before || '');
+}
+
+function text(_text) {
+    return {
+        wrap: function (before, after) {
+            return text(wrap(_text, before, after));
+        },
+        toString: function () {
+            return text;
+        }
+    }
+}
+
+
+
+
+
+
+
+
 
