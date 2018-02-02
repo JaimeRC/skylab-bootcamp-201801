@@ -9,10 +9,10 @@ Array.prototype.moveElement = function (array, index, pos) {
     return array;
 }
 
-/*
-console.log(moveElement([10, 20, 30, 40, 50], 0, 2));
+
+console.log(Array.prototype.moveElement([10, 20, 30, 40, 50], 0, 2));
 //[20, 30, 10, 40, 50]
-console.log(moveElement([10, 20, 30, 40, 50], -1, -2));
+console.log(Array.prototype.moveElement([10, 20, 30, 40, 50], -1, -2));
 //[10, 20, 50, 30, 40]
-*/
+
 

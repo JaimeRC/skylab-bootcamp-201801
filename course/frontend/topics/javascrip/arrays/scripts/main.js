@@ -60,8 +60,8 @@ function sumArray(arr) {
     var sum = 0;
     var product = 1;
     for (var i = 0; i < arr.length; i++) {
-        sum = sum + arr[i];
-        product = product * arr[i];
+        sum += arr[i];
+        product *= arr[i];
     }
     return "Sum: " + sum + ", product: " + product;
 }
