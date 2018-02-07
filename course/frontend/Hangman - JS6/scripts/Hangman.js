@@ -20,7 +20,7 @@ class Hangman extends Game {
                 if (charOrWord.match(/\W/) === null) {
                     if (charOrWord.length > 1) {
                         (this.word.toUpperCase() === charOrWord.toUpperCase())
-                            ? message = 'You have guessed the word, well done!' : message = 'Sorry, you have not guessed... the correct word is ' + word.toUpperCase() + '.';
+                            ? message = 'You have guessed the word, well done!' : message = `Sorry, you have not guessed... the correct word is ${word.toUpperCase()}.`;
                         this.attemps = 0;
                     } else {
                         let exist = false;
@@ -32,14 +32,14 @@ class Hangman extends Game {
                         }
                         (exist === true) ? this.attemps : --this.attemps;
                         message = this.attemps + " " + arr_Word.join(' ');
-                        if (arr_Word.indexOf('_') < 0) console.log('You have guessed the word, well done!');
+                        if (arr_Word.indexOf('_') < 0) message = 'You have guessed the word, well done!';
                     }
                 } else {
                     message = 'Please, enter a valid character or word!';
                     --this.attemps;
                 }
             } catch (error) {
-                console.error('Error: ' + error.message)
+                console.error(`Error:  + ${error.message}`)
                 message = 'Please, enter a valid character or word!';
             }
         } else {
