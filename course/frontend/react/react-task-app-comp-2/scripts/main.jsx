@@ -52,7 +52,7 @@ class TaskInput extends React.Component {
         }
     }
 
-    keepInput = e => this.setState({ input: e.target.value })
+    keepInput = input => this.setState({ input: input })
 
     addTask = () => {
         this.props.onAddTask(this.state.input)
@@ -67,7 +67,7 @@ class TaskInput extends React.Component {
             this.addTask()
         }
         }>
-            <input type="text" className="round-blue-input" placeholder="Input task" onChange={this.keepInput} value={this.state.input} />
+            <input type="text" className="round-blue-input" placeholder="Input task" onChange={ (e) => this.keepInput(e.target.value)} value={this.state.input} />
             &nbsp;
         <button type="submit" className="round-red-button">Add</button>
         </form>

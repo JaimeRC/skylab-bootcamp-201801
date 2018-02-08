@@ -19,10 +19,10 @@ class TaskApp extends React.Component {
         })
     }
 
-    addTaskFinish = index => {
+    addTaskFinish = task => {
         this.setState(prevState => {
             return {
-                tasksFinish: prevState.tasksFinish.concat(this.state.tasks[index])
+                tasksFinish: prevState.tasksFinish.concat(task)
             }
         })
     }
@@ -38,8 +38,8 @@ class TaskApp extends React.Component {
     render() {
         return <div>
             <TaskInput onAddTask={this.addTask} onInputChange={this.keepInput} inputValue={this.state.input} />
-            <TaskList tasks={this.state.tasks} onRemoveTask={this.removeTask} />
-            <TaskListFinish tasksFinish={this.state.tasksFinish} onRemoveTask={this.addTaskFinish} />
+            <TaskList tasks={this.state.tasks} onRemoveTask={this.removeTask} onAddTaskFinish={this.addTaskFinish} />
+            <TaskListFinish tasksFinish={this.state.tasksFinish} />
         </div>
     }
 }
@@ -60,12 +60,15 @@ function TaskList(props) {
         {props.tasks.map((task, index) => <li>{task} &nbsp; <a onClick={(e) => {
             e.preventDefault();
             props.onRemoveTask(index)
+            props.onAddTaskFinish(task)
         }}>🗑</a></li>)}
     </ul>
 }
 
 function TaskListFinish(props) {
     return <ul>
+        <br />
+        <label>Task Finish:</label>
         {props.tasksFinish.map((task, index) => <li>{task}</li>)}
     </ul>
 }
