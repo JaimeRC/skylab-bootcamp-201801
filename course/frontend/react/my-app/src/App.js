@@ -1,21 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import TaskInput from './components/TaskInput';
+import TaskList from './components/TaskList';
 import './App.css';
 
-class App extends Component {
+class TaskApp extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      tasks: []
+    }
+  }
+
+  addTask = (task) => {
+
+    this.setState(prevState => {
+      return {
+        // tasks: prevState.tasks.concat(this.state.input)
+        tasks: [...prevState.tasks, task]
+      }
+    })
+
+    // COMPRESSED version! (WARN!)
+    // this.setState(prevState => ({ tasks: [...prevState.tasks, this.state.input], input: '' }))
+  }
+
+  // removeTask = index => this.setState(prevState => ({ tasks: prevState.tasks.filter((task, _index) => index !== _index) }))
+
+  // UNCOMPRESSED version ,)
+  removeTask = index => {
+    this.setState(prevState => {
+      return {
+        tasks: prevState.tasks.filter((task, _index) => {
+          return index !== _index
+        })
+      }
+    })
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <div>
+      <TaskInput onAddTask={this.addTask} />
+      <TaskList tasks={this.state.tasks} onRemoveTask={this.removeTask} />
+    </div>
   }
 }
 
-export default App;
+export default TaskApp

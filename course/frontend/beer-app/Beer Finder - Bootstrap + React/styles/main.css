@@ -1,0 +1,18 @@
+#logo{
+    display: block !important;
+    margin-left: auto;
+	margin-right: auto;
+}
+
+thead{
+    background-color: lightgrey;
+}
+
+.footer_warning{
+    font-size: 12px;
+    text-align: center;
+}
+
+#brand_name {
+    font-weight: bold;
+}
