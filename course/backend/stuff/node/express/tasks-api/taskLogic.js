@@ -1,61 +1,39 @@
-let tasks = []
+const taskData = require('./taskData')
 
 const taskLogic = {
 
     listTodo() {
-        if (tasks.length === 0) {
-            return ('No hay tareas grabadas.')
-        }
-        return tasks
+        return taskData.list()
     },
+
     create(task) {
-        const taskExist = tasks.some(item => item.id === task.id)
-
-        if (taskExist) {
-            throw Error('La tarea ya existe')
-
-        } else {
-            const item = {
-                id: task.id,
-                text: task.text,
-                done: task.done,
-                username: task.username
-            }
-            tasks.push(item)
-            return item;
+        try {
+            taskData.retrieve(task.id)
+        } catch (err) {
+            taskData.create(task)
         }
+
+        throw Error('La tarea ya existe')
     },
+
     update(id, text) {
-        const index = tasks.findIndex(task => task.id === id)
-        if (index < 0) {
-            throw Error('La tarea no existe')
-        } else {
-            tasks[index].text = text
-            return tasks[index]
-        }
+        const task = taskData.retrieve(id)
+        taskData.update(task.id, text, task.done)
     },
 
     markDone(id) {
-        const index = tasks.findIndex(task => task.id === id)
-        if (index < 0) {
-            throw Error('La tarea no existe')
-        } else {
-            tasks[index].done = true
-            return tasks[index]
-        }
+        const task = taskData.retrieve(id)
+        taskData.update(task.id, task.text, true)
     },
 
     remove(id) {
-        const index = tasks.findIndex(task => task.id === id)
-        if (index < 0) {
-            throw Error('La tarea no existe')
-        } else {
-            tasks.splice(index, 1)
-            return (`Tarea con id ${id} ha sido eliminada`)
-        }
+        const task = taskData.retrieve(id)
+        const deleteTask = taskData.delete(id)
+        return deleteTask
     },
 
     removeAll() {
+        const tasks = taskData.list()
         if (tasks.length === 0) {
             return ('No hay tareas para eliminarse')
         } else {
