@@ -13,7 +13,7 @@ const express = require('express')
 
 const bodyParser = require('body-parser')
 
-const taskLogic = require('./taskLogic')
+const taskLogic = require('../logic/taskLogic')
 
 const jsonBodyParser = bodyParser.json()
 
@@ -46,24 +46,16 @@ router.put('/update/task/:id', jsonBodyParser, (req, res) => {
     const id = req.params.id
     const text = req.body.text
 
-    try {
-        const updateTask = taskLogic.update(id, text)
-        res.json(updateTask)
-    } catch (err) {
-        res.send(err.message)
-    }
-
+    const updateTask = taskLogic.update(id, text)
+    res.json(updateTask)
 })
 
 // Eliminar una tarea
 router.delete('/delete/task/:id', jsonBodyParser, (req, res) => {
     const id = req.params.id
-    try {
-        const deleteTask = taskLogic.remove(id)
-        res.send(deleteTask)
-    } catch (err) {
-        res.send(err.message)
-    }
+
+    const deleteTask = taskLogic.remove(id)
+    res.send(deleteTask)
 })
 
 // Eliminar todas las tareas
@@ -74,13 +66,8 @@ router.delete('/deleteall/tasks', jsonBodyParser, (req, res) => {
 // Actualizar la tarea a realizada
 router.put('/done/task/:id', jsonBodyParser, (req, res) => {
     const id = req.params.id
-
-    try {
-        const doneTask = taskLogic.markDone(id)
-        res.json(doneTask)
-    } catch (err) {
-        res.send(err.message)
-    }
+    const doneTask = taskLogic.markDone(id)
+    res.json(doneTask)
 })
 
 // Listar todas las tareas realizadas
