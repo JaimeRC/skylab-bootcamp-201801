@@ -6,6 +6,8 @@ const { Router } = require('express')
 
 const { success, fail } = require('./api-utils')
 
+const bcryp = require('./encryp')
+
 const router = Router()
 
 router.get('/users', (req, res) => res.json(success('Users listing succeeded.', userLogic.list())))
@@ -30,6 +32,8 @@ router.post('/users', jsonBodyParser, (req, res) => {
     const { username, password } = req.body
 
     try {
+        const x = bcryp.encryp(password)
+        //**************************************** */
         userLogic.register(username, password)
 
         res.json(success('User registration succeeded.'))

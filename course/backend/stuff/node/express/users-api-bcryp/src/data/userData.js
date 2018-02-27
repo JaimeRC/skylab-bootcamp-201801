@@ -1,11 +1,15 @@
+const desencrypt = require('./desencryp')
+
 const users = []
 
 const userData = {
     list() { return users },
 
     create(username, password) {
-
-        users.push({ username, password })
+        users.push({
+            username: username,
+            password: password
+        })
     },
 
     retrieve(username) {
@@ -19,6 +23,10 @@ const userData = {
     update(username, password) {
         const user = this.retrieve(username)
 
+        //**************************************** */
+        const secretPass = desencrypt.desencrypt(username, password)
+        if (secretPass !== password)
+            throw Error('Wrong username and/or password.')
         user.password = password
     },
 
@@ -30,7 +38,5 @@ const userData = {
         users.splice(index, 1)
     }
 }
-
-
 
 module.exports = userData
