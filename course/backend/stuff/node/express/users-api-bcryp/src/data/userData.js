@@ -1,4 +1,4 @@
-const desencrypt = require('./desencryp')
+const desencrypt = require('./desencrypt')
 
 const users = []
 
@@ -24,7 +24,8 @@ const userData = {
         const user = this.retrieve(username)
 
         //**************************************** */
-        const secretPass = desencrypt.desencrypt(username, password)
+        const secretPass = desencrypt.desencrypt(user.password,password)
+        console.log(secretPass)
         if (secretPass !== password)
             throw Error('Wrong username and/or password.')
         user.password = password
