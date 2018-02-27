@@ -1,9 +1,7 @@
 /**
- * API TASK 
+ * TASK API
  * 
  * @version 1.0.0
- * @param {Array} tasks - Lista de tareas
- * @param {Boolean} taskExist - Si existe la tarea
  * 
  */
 

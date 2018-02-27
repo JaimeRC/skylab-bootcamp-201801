@@ -11,8 +11,8 @@ const taskData = {
     },
     
     listDone() {
-        const tasks = this.list().filter(task => task.done === true)
-        if (tasks.length === 0) {
+        const tasksDone = this.list().filter(task => task.done === true)
+        if (tasksDone.length === 0) {
             throw Error('No hay ninguna tarea realizada')
         } else {
             return tasks
@@ -20,13 +20,7 @@ const taskData = {
     },
 
     create(task) {
-        const item = {
-            id: task.id,
-            text: task.text,
-            done: task.done,
-            username: task.username
-        }
-        tasks.push(item)
+        tasks.push(task)
         return item
     },
 
