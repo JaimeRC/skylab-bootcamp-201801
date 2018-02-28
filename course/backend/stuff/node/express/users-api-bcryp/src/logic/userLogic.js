@@ -12,9 +12,9 @@ const userLogic = {
     register(username, password) {
         validate(username, password)
 
-        try{
+        try {
             userData.retrieve(username)
-        } catch(err) {
+        } catch (err) {
             return userData.create(username, password)
         }
 
@@ -22,9 +22,9 @@ const userLogic = {
     },
 
     retrieve(username) {
-        const user = userData.retrieve(username)        
+        const user = userData.retrieve(username)
 
-        return { username: user.username }        
+        return { username: user.username }
     },
 
     update(username, password, newPassword) {
@@ -32,10 +32,10 @@ const userLogic = {
 
         const user = userData.retrieve(username)
 
-        if (user.password === password) {
-            userData.update(username, newPassword)
+        if (user) {
+            userData.update(username, password, newPassword)
         } else
-            throw Error('Wrong username and/or password.')
+            throw Error('User no exist')
     },
 
     destroy(username, password) {

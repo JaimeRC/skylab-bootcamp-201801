@@ -33,9 +33,8 @@ router.post('/users', jsonBodyParser, (req, res) => {
 
     try {
         const hash = bcrypt.encrypt(password)
-        console.log(hash)
         //**************************************** */
-        userLogic.register(username,password)
+        userLogic.register(username, hash)
 
         res.json(success('User registration succeeded.'))
     } catch (err) {
@@ -47,12 +46,12 @@ router.put('/users/:username', jsonBodyParser, (req, res) => {
     const { params: { username } } = req
 
     const { password, newPassword } = req.body
-
+    console.log(username + "    " + password + "    " + newPassword)
     try {
         userLogic.update(username, password, newPassword)
 
         res.json(success('User update succeeded'))
-    } catch(err) {
+    } catch (err) {
         res.json(fail('User update failed.', err.message))
     }
 })
@@ -66,7 +65,7 @@ router.delete('/users/:username', jsonBodyParser, (req, res) => {
         userLogic.destroy(username, password)
 
         res.json(success('User deletion succeeded'))
-    } catch(err) {
+    } catch (err) {
         res.json(fail('User deletion failed.', err.message))
     }
 })

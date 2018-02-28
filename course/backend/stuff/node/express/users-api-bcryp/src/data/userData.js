@@ -1,5 +1,8 @@
 const desencrypt = require('./desencrypt')
 
+const bcrypt = require('./encrypt')
+
+
 const users = []
 
 const userData = {
@@ -20,15 +23,14 @@ const userData = {
         throw Error('User does not exist.')
     },
 
-    update(username, password) {
+    update(username, password, newPassword) {
         const user = this.retrieve(username)
 
         //**************************************** */
-        const secretPass = desencrypt.desencrypt(user.password,password)
-        console.log(secretPass)
-        if (secretPass !== password)
+        const secretPass = desencrypt.desencrypt(password, user.password)
+        if (!secretPass)
             throw Error('Wrong username and/or password.')
-        user.password = password
+        user.password = bcrypt.encrypt(password)
     },
 
     delete(username) {

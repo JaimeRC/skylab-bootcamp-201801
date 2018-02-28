@@ -1,5 +1,19 @@
 const bcrypt = require('bcrypt-nodejs')
 
+let desencrypt
+
+(function () {
+
+    const compare = {
+        desencrypt: (password, hash) => bcrypt.compareSync(password, hash)
+    }
+
+    desencrypt = compare
+}())
+
+module.exports = desencrypt
+
+/*
 const desencrypt = (function () {
     
     return function (hash,password) {
@@ -10,5 +24,4 @@ const desencrypt = (function () {
         });
     }
 }())
-
-module.exports = desencrypt
+*/
