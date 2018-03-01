@@ -23,14 +23,22 @@ const userData = {
         throw Error('User does not exist.')
     },
 
+    /**
+     * Password Update
+     * @param {String} username 
+     * @param {String} password - old password
+     * @param {String} newPassword - new password
+     * @param {Boolean} secretPass - true if the password does not equal the current password, false if it is not equal
+     * 
+     */
     update(username, password, newPassword) {
         const user = this.retrieve(username)
-
-        //**************************************** */
         const secretPass = desencrypt.desencrypt(password, user.password)
-        if (!secretPass)
+        if (secretPass){
+            user.password = bcrypt.encrypt(password)
+        } else {
             throw Error('Wrong username and/or password.')
-        user.password = bcrypt.encrypt(password)
+        }
     },
 
     delete(username) {

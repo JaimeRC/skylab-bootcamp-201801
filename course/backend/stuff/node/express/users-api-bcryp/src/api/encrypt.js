@@ -1,23 +1,39 @@
 const bcrypt = require('bcrypt-nodejs')
 
+/**
+ * Encript the password
+ * 
+ * Method Synchronous
+ * 
+ * @param {String} hash - return encrypted password
+ * @returns {String<hash>} 
+ */
+
 let encrypt
 
 (function () {
     
-    const inst = {
+    const hash = {
         encrypt: bcrypt.hashSync 
         //Other method:
         //encrypt: password =>  bcrypt.hashSync(password)
     }
 
-    encrypt = inst
+    encrypt = hash
 }())
-
 
 module.exports = encrypt
 
-/*
 
+/**
+ * Encript the password
+ * 
+ * Method Asynchronous
+ * 
+ *  Warning => this method does not work
+ * 
+ */
+/*
 const encrypt = (function () {
 
     const BCRYPT_SALT = 12
@@ -29,6 +45,5 @@ const encrypt = (function () {
             return hash
         });
     }
-
 }())
 */

@@ -1,5 +1,7 @@
 const bodyParser = require('body-parser')
 
+const jsonBodyParser = bodyParser.json()
+
 const userLogic = require('../logic/userLogic')
 
 const { Router } = require('express')
@@ -26,14 +28,19 @@ router.get('/users/:username', (req, res) => {
     }
 })
 
-const jsonBodyParser = bodyParser.json()
+/**
+ * Create User and Password
+ * 
+ * @param {String} username
+ * @param {String} password
+ * @param {String} hash - encrypted password
+ */
 
 router.post('/users', jsonBodyParser, (req, res) => {
     const { username, password } = req.body
 
     try {
         const hash = bcrypt.encrypt(password)
-        //**************************************** */
         userLogic.register(username, hash)
 
         res.json(success('User registration succeeded.'))
@@ -44,9 +51,8 @@ router.post('/users', jsonBodyParser, (req, res) => {
 
 router.put('/users/:username', jsonBodyParser, (req, res) => {
     const { params: { username } } = req
-
     const { password, newPassword } = req.body
-    console.log(username + "    " + password + "    " + newPassword)
+    
     try {
         userLogic.update(username, password, newPassword)
 
