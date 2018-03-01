@@ -64,10 +64,12 @@ router.delete('/deleteall/tasks', jsonBodyParser, (req, res) => {
 })
 
 // Actualizar la tarea a realizada
-router.put('/done/task/:id', jsonBodyParser, (req, res) => {
+router.put('/done/task/:id', (req, res) => {
+    console.log("DONE TASK!!!!!!!")
     const id = req.params.id
-    const doneTask = taskLogic.markDone(id)
-    res.json(doneTask)
+    console.log(id)
+    const taskDone = taskLogic.markDone(id)
+    res.json(taskDone)
 })
 
 // Listar todas las tareas realizadas

@@ -10,20 +10,20 @@ let taskApi;
 
         //Peticion de todas las tareas
         getTaskList: function () {
-            return axios.get(baseUrl + '/show/tasks')
+            return axios.get(`${baseUrl}/show/tasks`)
                 .then(res => res.data)
         },
 
         setTask: function (task) {
-            return axios.post(baseUrl + '/create/task', { task })
+            return axios.post(`${baseUrl}/create/task`,  task )
         },
 
         setTaskDone: function (id) {
-            return axios.put(baseUrl + `/done/task/${id}`)
+            return axios.put(`${baseUrl}/done/task/${id}`)
         },
 
         setTaskDelete: function (id) {
-            return axios.delete(baseUrl + `/delete/task/${id}`)
+            return axios.delete(`${baseUrl}/delete/task/${id}`)
         }
     }
 

@@ -7,7 +7,7 @@ html
 
   label #{message}
 
-  h6 TODOs
+  h5 TODOs
   ul
     each task in todo
       li= task.text + " "
@@ -15,7 +15,7 @@ html
     else 
       label
         
-  h6 DONEs
+  h5 DONEs
   ul
     each task in done
       li= task.text + " "

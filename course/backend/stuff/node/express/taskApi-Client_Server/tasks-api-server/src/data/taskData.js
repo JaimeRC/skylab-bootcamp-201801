@@ -20,6 +20,7 @@ const taskData = {
     },
 
     create(task) {
+        task.id = 
         tasks.push(task)
         return item
     },

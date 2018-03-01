@@ -27,9 +27,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/add', formBodyParser, (req, res) => {
-
     const task = {
-        id: index,
+        id: index.toString(),
         text: req.body.task,
         done: false
     }
