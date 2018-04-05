@@ -1,3 +1,4 @@
+import React from 'react'
 
 class InputText extends React.Component {
     constructor() {
@@ -18,7 +19,7 @@ class InputText extends React.Component {
 
     render() {
         return <div>
-            <input type="text" className="round-blue-input"  onChange={this.onChange} value={this.state.value} />
+            <input type="text" className="round-blue-input" onChange={this.onChange} value={this.state.value} />
         </div>
     }
 }

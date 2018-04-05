@@ -27,8 +27,20 @@ const userLogic = {
         return { username: user.username }
     },
 
-    update(username, password, newPassword) {
+    login(username, password) {
         validate(username, password)
+
+        try {
+            this.retrieve(username)
+            
+            userData.login(username, password)
+        } catch (err) {
+            throw Error(err.message)
+        }
+    },
+
+    update(username, password, newPassword) {
+        validate(username, password,newPassword)
 
         const user = userData.retrieve(username)
 

@@ -4,5 +4,6 @@ input.round-blue-input {
     border-width: 1px;
     border-color:blue;
     padding: 10px;
+    text-align: center;
   }
   

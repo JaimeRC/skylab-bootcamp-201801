@@ -1,16 +1,36 @@
 html
  head
  body
+
+ h4 Create User
   form(action="/user", method="post")
     input(type="text", name="name", placeholder="Write name")
     input(type="text", name="surname", placeholder="Write surname")
-    input(type="text", name="email", placeholder="Write surname")
-    input(type="text", name="username", placeholder="Write surname")
-    input(type="text", name="password", placeholder="Write surname")
-    input(type="submit", value="Login")
+    input(type="text", name="email", placeholder="Write email")
+    input(type="text", name="username", placeholder="Write username")
+    input(type="password", name="password", placeholder="Write password")
+    input(type="submit", value="Create User")
+
+  h4 Users
+  ul
+    each user in data
+      li= user.name + " " 
+        a(href=`/show/${user._id}`) ✅
+        if _id == user._id
+          form(action=`/update/${user._id}`, method="post")
+            input(type="text", name="name", placeholder="Write name")
+            input(type="text", name="surname", placeholder="Write surname")
+            input(type="email", name="email", placeholder="Write email")
+            input(type="text", name="username", placeholder="Write username")
+            input(type="password", name="password", placeholder="Write password")
+            input(type="text", name="newUsername", placeholder="Write new username")
+            input(type="password", name="newPassword", placeholder="Write new Password")
+            input(type="submit", value="Update")
+            a(href=`/delete/${user._id}`) 🗑
+          h6 #{result}
+
 
   form(action="/validate", method="post")
-    input(type="text", name="username", placeholder="Write surname")
-    input(type="text", name="password", placeholder="Write surname")
-    input(type="submit", value="Login")
-
+    input(type="text", name="username", placeholder="Write username")
+    input(type="text", name="password", placeholder="Write password")
+    h5 #{login}

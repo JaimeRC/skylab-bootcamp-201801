@@ -10,6 +10,7 @@ class App extends Component {
     super()
 
     this.state = {
+      user:{}, 
       username: "",
       password: "",
       newPassword: "",
@@ -18,31 +19,31 @@ class App extends Component {
     }
   }
 
+  create = () => {
+    apiClient.createUser(this.state.username, this.state.password)
+      .then(res => {
+        this.setState({ result: res.data })
+      })
+  }
+
   validate = () => {
     apiClient.validateUser(this.state.username, this.state.password)
       .then(res => this.setState({ result: res.data }))
   }
 
-  create = () => {
-    apiClient.createUser(this.state.username, this.state.password)
-      .then(res => {
-        console.log(res.data)
-        this.setState({ result: res.data })
-      })
-  }
-
   updatePassword = () => {
-    apiClient.changePassword(this.state.username, this.state.password)
+    apiClient.changePassword(this.state.username, this.state.password, this.state.newPassword)
       .then(res => this.setState({ result: res.data }))
   }
 
-  onClick = e => {
+  onClick = () => {
     if (this.refs.example_1.getValue() === "" || this.refs.example_2.getValue() === "") {
       this.setState({ text: "Introduce el usuario o la contraseña correcta" })
     } else {
       this.setState({
         username: this.refs.example_1.getValue(),
-        password: this.refs.example_2.getValue()
+        password: this.refs.example_2.getValue(),
+        text: ""
       })
     }
   }
@@ -54,7 +55,8 @@ class App extends Component {
       this.setState({
         username: this.refs.example_1.getValue(),
         password: this.refs.example_2.getValue(),
-        newPassword: this.refs.example_3.getValue()
+        newPassword: this.refs.example_3.getValue(),
+        text: ""
       })
     }
   }

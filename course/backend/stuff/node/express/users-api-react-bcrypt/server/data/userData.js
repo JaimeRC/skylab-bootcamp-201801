@@ -24,6 +24,24 @@ const userData = {
     },
 
     /**
+    * Password Update
+    * @param {String} username
+    * @param {String} password - old password
+    * @param {Boolean} secretPass - true if the password does not equal the current password, false if it is not equal
+    * 
+    */
+    login(username, password) {
+        const user = this.retrieve(username)
+        const secretPass = desencrypt.desencrypt(password, user.password)
+
+        console.log(secretPass)
+        if (!secretPass) {
+            throw Error('Wrong username and/or password.')
+        }
+  
+    },
+
+    /**
      * Password Update
      * @param {String} username 
      * @param {String} password - old password
@@ -34,7 +52,7 @@ const userData = {
     update(username, password, newPassword) {
         const user = this.retrieve(username)
         const secretPass = desencrypt.desencrypt(password, user.password)
-        if (secretPass){
+        if (secretPass) {
             user.password = bcrypt.encrypt(password)
         } else {
             throw Error('Wrong username and/or password.')

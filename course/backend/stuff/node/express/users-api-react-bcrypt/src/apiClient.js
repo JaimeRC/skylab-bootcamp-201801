@@ -16,20 +16,17 @@ let apiClient;
 
         //Crear un usuario
         createUser: function (username, password) {
-            const newPassword = hash(password)
-            console.log(newPassword)
-            return axios.post(`${baseUrl}/users`, { username, newPassword })
+            const secretPass = hash(password)
+            return axios.post(`${baseUrl}/users`, { username, secretPass })
         },
 
         //Peticion si el usuario existe
         validateUser: function (username, password) {
-            console.log(`${baseUrl}/users/${username}`)
             return axios.post(`${baseUrl}/users/${username}`, { password })
         },
 
         //Cambiar contraseña del usuario
         changePassword: function (username, password, newPassword) {
-            console.log(`${baseUrl}/users/${username}`)
             return axios.put(`${baseUrl}/users/${username}`, { password, newPassword })
         }
     }

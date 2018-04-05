@@ -16,8 +16,10 @@ const { success, fail } = require('./api-utils')
 
 const router = Router()
 
+//Listar a todos los usuarios
 router.get('/users', (req, res) => res.json(success('Users listing succeeded.', userLogic.list())))
 
+//Listar por usuario determinado
 router.get('/users/:username', (req, res) => {
     //const username = req.params.username
     //const { username } = req.params
@@ -39,12 +41,11 @@ router.get('/users/:username', (req, res) => {
  * @param {String} password
  * @param {String} hash - encrypted password
  */
-
 router.post('/users', jsonBodyParser, (req, res) => {
-    const { username, password } = req.body
+    const { username, secretPass } = req.body
 
     try {
-        userLogic.register(username, password)
+        userLogic.register(username, secretPass)
 
         res.json(success('User registration succeeded.'))
     } catch (err) {
@@ -52,10 +53,25 @@ router.post('/users', jsonBodyParser, (req, res) => {
     }
 })
 
+//Validar usuario y contraseña
+router.post('/users/:username', jsonBodyParser, (req, res) => {
+    const { body: { password } } = req
+    const { params: { username } } = req
+
+    try {
+        userLogic.login(username, password)
+
+        res.json(success('User validated succeeded'))
+    } catch (err) {
+        res.json(fail('User validation failed.', err.message))
+    }
+})
+
+//Actualizar la contraseña con la contraseña inicial
 router.put('/users/:username', jsonBodyParser, (req, res) => {
     const { params: { username } } = req
     const { password, newPassword } = req.body
-    
+
     try {
         userLogic.update(username, password, newPassword)
 
@@ -65,6 +81,7 @@ router.put('/users/:username', jsonBodyParser, (req, res) => {
     }
 })
 
+//Eliminar usuario segun su nombre y contraseña
 router.delete('/users/:username', jsonBodyParser, (req, res) => {
     const { params: { username } } = req
 
