@@ -35,7 +35,6 @@ Person.prototype.bio = function () {
     this.interests.forEach(function(el, idx, arr) {
         inter += el + (idx < (arr.length - 2) ? ', ' : (idx < (arr.length - 1) ? ' and ' : ''));
     });
-
     return r + inter;
 }
 

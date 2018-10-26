@@ -1,0 +1,22 @@
+html
+ head
+ body
+  form(action="/add", method="post")
+    input(type="text", name="task", placeholder="Write the task")
+    input(type="submit" value="ADD")
+
+  h6 TODOs
+  ul
+    each task in todo
+      li= task.text + " "
+        a(href=`/done/${task.id}`) ✅
+    else 
+      label No hay tareas pendientes
+        
+  h6 DONEs
+  ul
+    each task in done
+      li= task.text + " "
+        a(href=`/delete/${task.id}`) 🗑
+    else 
+      label No hay tarias realizadas

@@ -1,0 +1,12 @@
+
+.rounded-circle{
+    width: 140px; 
+    height: 140px;
+}
+
+.col-lg-4{
+    width: 200px;
+    height: 250px;
+    text-align: center;
+    align-items: center;
+}

@@ -1,0 +1,32 @@
+* {
+    background-color: rgba(255, 239, 239, 0.568);
+}
+
+#contact{
+    display: inline-flex;
+    width:100%;
+}
+
+.image{
+    float: left;
+    width: 30%;
+    object-position: center;
+}
+
+.name{
+    float: left;
+    width: 35%;
+}
+
+.address{
+    width: 35%;
+    list-style: none;
+}
+
+.principal{
+    color: brown;
+}
+
+#information{
+    background-color: rgba(241, 229, 238, 0.836);
+}

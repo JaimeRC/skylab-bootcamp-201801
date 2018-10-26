@@ -1,0 +1,66 @@
+html{
+  background-color: #2899b6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30px;
+  margin: 36px auto;
+  max-width: 500px;
+  padding: 16px;
+  width: 80%;
+}
+
+
+.header{
+  text-align: center;
+}
+
+#button_play{
+  display: block;
+  margin: 0 auto;
+}
+
+.final_word{
+  text-align: center;
+}
+
+.formulary{
+  text-align: center;
+}
+
+.formulary *{
+  display: block;
+  margin: 12px auto;
+}
+.game_attempts{
+  display: inline-block;
+}
+
+input{
+  outline: none;
+  padding: 12px;
+
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus{
+  outline: 4px solid lightblue;
+}
+             
+.button{
+  background-color: #2899b6;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font: bold;
+  margin: 20px auto;
+  padding: 8px 32px;
+}
+
+.hidden{
+  display: none;
+}
+

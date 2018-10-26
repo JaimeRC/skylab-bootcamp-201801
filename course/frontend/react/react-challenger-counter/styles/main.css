@@ -1,0 +1,12 @@
+*{
+    font-family: Courier New, Courier, monospace;
+}
+
+button{
+    padding: 10px;
+    background-color: lightblue;
+    border-radius: 10px;
+    border-width: 1px;
+    margin: 5px;
+}
+

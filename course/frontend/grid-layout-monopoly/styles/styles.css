@@ -1,0 +1,13 @@
+.container{
+    display: grid;
+    grid-gap: 10;
+    grid-template-columns: repeat(5,100px);
+    grid-template-rows: repeat(5,100px);
+    justify-content: 
+}
+
+.up{
+    border: 20px;
+    border-color: black;
+
+}
